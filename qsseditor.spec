@@ -22,23 +22,22 @@ Version:        %{version}
 Release:        1
 Summary:        QSS Editor
 License:        GPL-3.0
-Group:          System/Fhs
+Group:          Productivity/Graphics/Other
 Source0:        qsseditor-%{version}.zip
+Vendor:         Dmitry Baryshev <linuxsquirrel.dev@gmail.com>
 Url:            http://sourceforge.net/projects/qsseditor/
+Packager: 	Kamarada Project <kamaradalinux@gmail.com>
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      i586 x86_64
+BuildRequires:	hicolor-icon-theme
 BuildRequires:  libqt4-devel
 BuildRequires:  libqscintilla-devel
-BuildRequires:  make
 BuildRequires:  unzip
 BuildRequires:  upx
 Requires:	hicolor-icon-theme
 
 
 %description
-A tool to edit and preview Qt style sheets (QSS), made by Dmitry Baryshev
-
-http://sourceforge.net/projects/qsseditor/
+QSS Editor is a tool to edit and preview Qt style sheets (QSS). It provides a simple interface with autocompletion support.
 
 
 %prep
@@ -56,8 +55,6 @@ cd ..
 %install
 cd qsseditor-%{version}
 mkdir -p $RPM_BUILD_ROOT/usr/bin
-pwd
-ls -a
 cp ./QssEditor $RPM_BUILD_ROOT/usr/bin/qsseditor
 mkdir -p $RPM_BUILD_ROOT/usr/share/qsseditor
 cp -R translations $RPM_BUILD_ROOT/usr/share/qsseditor/translations
@@ -81,14 +78,18 @@ cd ..
 %doc COPYING
 /usr/bin/qsseditor
 /usr/share/applications/qsseditor.desktop
-/usr/share/qsseditor/
+%dir /usr/share/icons/hicolor/16x16/apps/
 /usr/share/icons/hicolor/16x16/apps/qsseditor.png
+%dir /usr/share/icons/hicolor/24x24/apps/
 /usr/share/icons/hicolor/24x24/apps/qsseditor.png
+%dir /usr/share/icons/hicolor/32x32/apps/
 /usr/share/icons/hicolor/32x32/apps/qsseditor.png
+%dir /usr/share/icons/hicolor/48x48/apps/
 /usr/share/icons/hicolor/48x48/apps/qsseditor.png
 /usr/share/man/man1/qsseditor.1.gz
+/usr/share/qsseditor/
 
 
 %changelog
-* Sat Aug 09 2014 kamaradalinux@gmail.com
+* Fri Aug 15 2014 Kamarada Project <kamaradalinux@gmail.com>
 - Initial import from version 0.5.5
